@@ -1,0 +1,26 @@
+[
+  {
+    "title": "FIFA 21",
+    "developer": "EA Vancouver, EA Romania",
+    "publisher": "Electronic Arts",
+    "release_date": "October 9, 2020",
+    "platforms": ["PlayStation 4", "Xbox One", "Nintendo Switch", "PC"],
+    "description": "FIFA 21 is a football simulation video game that offers new ways to team up and express yourself on the street and in the stadium."
+  },
+  {
+    "title": "God of War Ragnarök",
+    "developer": "Santa Monica Studio",
+    "publisher": "Sony Interactive Entertainment",
+    "release_date": "November 9, 2022",
+    "platforms": ["PlayStation 4", "PlayStation 5", "PC"],
+    "description": "An action-adventure game following Kratos and his son Atreus as they navigate the Norse realms prior to Ragnarök."
+  },
+  {
+    "title": "Pokémon Red",
+    "developer": "Game Freak",
+    "publisher": "Nintendo",
+    "release_date": "February 27, 1996",
+    "platforms": ["Game Boy"],
+    "description": "The landmark role-playing video game that introduced players to the Kanto region and 151 original Pokémon species."
+  }
+]

@@ -1,0 +1,13 @@
+langchain
+langchain-google-genai
+langchain-core
+langchain-community
+duckduckgo-search
+ddgs
+faiss-cpu
+deepeval
+streamlit
+pydantic
+python-dotenv
+google-generativeai
+uvicorn
