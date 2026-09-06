@@ -5,7 +5,7 @@ from src.logger import logger
 
 class UdaPlayOrchestrator:
     def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.2)
+        self.llm = ChatGoogleGenerativeAI(model="gemini-3.6-flash", temperature=0.2)
 
     def run(self, query: str) -> dict:
         """Main execution loop for handling query evaluation and automated fallbacks."""
