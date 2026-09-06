@@ -1,3 +1,4 @@
+import ast  
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -33,18 +34,34 @@ if prompt := st.chat_input("Ask about video games..."):
             output = orchestrator.route_and_execute(prompt)
             raw_response = output["final_response"]
             
-            # --- OPTION 1 EXTRACTION LOGIC ---
-            # Check if the response is a list (with structured metadata) or a plain string
+            # --- ROBUST EXTRACTION LOGIC ---
+            response_text = ""
+            parsed_response = None
+
+            # Scenario A: If it is already a list object
             if isinstance(raw_response, list):
+                parsed_response = raw_response
+            
+            # Scenario B: If it is a string representation of a list (e.g., "[{'type': ...}]")
+            elif isinstance(raw_response, str):
+                cleaned_string = raw_response.strip()
+                if cleaned_string.startswith("[") and cleaned_string.endswith("]"):
+                    try:
+                        # Safely evaluate the string into a Python list
+                        parsed_response = ast.literal_eval(cleaned_string)
+                    except (ValueError, SyntaxError):
+                        parsed_response = None
+
+            # Extract the text if we successfully got a list structure
+            if isinstance(parsed_response, list):
                 extracted_texts = [
                     item['text'] 
-                    for item in raw_response 
+                    for item in parsed_response 
                     if isinstance(item, dict) and item.get('type') == 'text' and 'text' in item
                 ]
-                # Join messages together, or take the first one
                 response_text = "\n\n".join(extracted_texts) if extracted_texts else "No text found in response."
             else:
-                # Fallback if it is already a plain string
+                # Fallback: If it's just a normal plain string
                 response_text = str(raw_response)
             # ----------------------------------
 
